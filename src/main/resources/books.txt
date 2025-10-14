@@ -1,0 +1,48 @@
+Book Title                      | Author                | Genre                | Brief Description
+--------------------------------|-----------------------|----------------------|--------------------------------------------------------------------------------
+War and Peace                   | Leo Tolstoy           | Historical Fiction   | An epic saga about aristocratic families during the Napoleonic Wars.
+Crime and Punishment            | Fyodor Dostoevsky     | Psychological Fiction| The story of a student who commits murder and struggles with guilt.
+Anna Karenina                   | Leo Tolstoy           | Romance              | A tragic tale of love and infidelity in Russian high society.
+The Master and Margarita        | Mikhail Bulgakov      | Fantasy              | A fantastical novel about the devil visiting Moscow and the love of the Master and Margarita.
+The Idiot                       | Fyodor Dostoevsky     | Psychological Fiction| The story of Prince Myshkin, whose kindness and naivety lead to tragic events.
+The Brothers Karamazov          | Fyodor Dostoevsky     | Philosophical Fiction| A philosophical novel about the complex relationships within the Karamazov family.
+Doctor Zhivago                  | Boris Pasternak       | Historical Fiction   | The story of physician and poet Yuri Zhivago during the Russian Revolution.
+And Quiet Flows the Don         | Mikhail Sholokhov     | Historical Fiction   | An epic about the lives of Cossacks on the Don River during the Civil War.
+One Day in the Life of Ivan Denisovich | Alexander Solzhenitsyn | Historical Fiction | A tale of a day in the life of a Soviet labor camp prisoner.
+Lolita                          | Vladimir Nabokov      | Psychological Fiction| The story of an adult man's obsession with a young girl.
+Dead Souls                      | Nikolai Gogol         | Satire               | A satirical novel about a swindler buying "dead souls" of serfs.
+Eugene Onegin                   | Alexander Pushkin     | Novel in Verse       | A novel in verse about a young nobleman and his tragic love for Tatyana.
+A Hero of Our Time              | Mikhail Lermontov     | Psychological Fiction| A psychological novel about the complex and contradictory hero Pechorin.
+Oblomov                         | Ivan Goncharov        | Psychological Fiction| The story of a lazy and apathetic nobleman, Oblomov.
+Fathers and Sons                | Ivan Turgenev         | Philosophical Fiction| A novel about generational conflict and nihilism.
+Heart of a Dog                  | Mikhail Bulgakov      | Satire               | A satirical novella about a dog transformed into a human.
+Roadside Picnic                 | Arkady and Boris Strugatsky | Science Fiction | A science fiction novel about a zone where strange phenomena occur.
+The Twelve Chairs               | Ilya Ilf and Yevgeny Petrov | Comedy            | A comedic novel about the search for treasures hidden in one of twelve chairs.
+The Golden Calf                 | Ilya Ilf and Yevgeny Petrov | Comedy            | The sequel to "The Twelve Chairs," detailing new adventures of Ostap Bender.
+The White Guard                 | Mikhail Bulgakov      | Historical Fiction   | A novel about the fate of the Turbin family during the Civil War.
+Chevengur                       | Andrei Platonov       | Utopian Fiction      | A utopian novel about the creation of a communist society in a provincial town.
+The Day Lasts More Than a Hundred Years | Chingiz Aitmatov | Historical Fiction | A novel about the clash of traditions and modernity in Kyrgyz society.
+Life and Fate                   | Vasily Grossman       | Historical Fiction   | An epic about World War II and the fates of people during this time.
+We                              | Yevgeny Zamyatin      | Dystopian Fiction    | A dystopian novel about a totalitarian society of the future.
+Monday Begins on Saturday       | Arkady and Boris Strugatsky | Fantasy            | A fantastical novella about a research institute of magic.
+Children of the Arbat           | Anatoly Rybakov       | Historical Fiction   | A novel about the lives of young people in 1930s Moscow.
+The Foundation Pit              | Andrei Platonov       | Allegorical Fiction  | An allegorical novel about the construction of socialism.
+Hard to Be a God                | Arkady and Boris Strugatsky | Science Fiction | A science fiction novel about an observer from Earth on another planet.
+Peter the Great                 | Alexei Tolstoy        | Historical Fiction   | A historical novel about the life and reign of Peter the Great.
+The Road to Calvary             | Alexei Tolstoy        | Historical Fiction   | A trilogy about the fates of people during the revolution and Civil War.
+The Days of the Turbins         | Mikhail Bulgakov      | Drama                | A play about the fate of the Turbin family during the Civil War.
+The Gulag Archipelago           | Alexander Solzhenitsyn | Non-fiction         | A documentary and literary investigation of the Soviet labor camp system.
+Three Comrades                  | Erich Maria Remarque  | Historical Fiction   | A story of friendship and love among three friends in post-war Germany.
+All Quiet on the Western Front  | Erich Maria Remarque  | Historical Fiction   | A novel about the lives of German soldiers on the front lines of World War I.
+The Plague                      | Albert Camus          | Allegorical Fiction  | An allegorical novel about the fight against a plague in an Algerian town.
+The Stranger                    | Albert Camus          | Philosophical Fiction| The story of a man who does not fit into societal norms.
+1984                            | George Orwell         | Dystopian Fiction    | A dystopian novel about a totalitarian society of the future.
+Animal Farm                     | George Orwell         | Allegorical Fiction  | An allegorical novella about a revolution on an animal farm.
+Ulysses                         | James Joyce           | Modernist Fiction    | An experimental novel about a day in the life of Dublin's residents.
+The Picture of Dorian Gray      | Oscar Wilde           | Gothic Fiction       | The story of a young man whose appearance remains unchanged despite his vices.
+The Great Gatsby                | F. Scott Fitzgerald   | Tragedy              | A novel about the life and tragedy of a wealthy man in the Jazz Age.
+The Catcher in the Rye          | J.D. Salinger         | Coming-of-Age Fiction| The story of a teenager rebelling against society and searching for his place in the world.
+To Kill a Mockingbird           | Harper Lee            | Historical Fiction   | A story about racial prejudice and injustice in the southern United States.
+For Whom the Bell Tolls         | Ernest Hemingway      | Historical Fiction   | A novel about the Spanish Civil War and the fate of an American volunteer.
+The Old Man and the Sea         | Ernest Hemingway      | Adventure Fiction    | The story of an old fisherman and his struggle with a giant fish.
+A Farewell to Arms              | Ernest Hemingway      | Historical Fiction   | A novel about love and war, based on the author's experiences in World War I.

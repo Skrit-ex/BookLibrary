@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleafe.org">
+<head>
+    <meta charset="UTF-8">
+    <title>GetBooks</title>
+</head>
+<body>
+Book info:
+<br>
+<ul> <li th:each="name :${nameBooks}" th:text="${name}"> Название книги </li></ul>
+<br>
+
+
+</body>
+</html>

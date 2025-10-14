@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleafe.org">
+<head>
+    <meta charset="UTF-8">
+    <title>HomePage</title>
+</head>
+<body>
+Welcome to HomePage, <span th:text="${ param.username}"></span>
+
+<a href="/getListOfBooks" style="display: inline-block; padding: 10px 20px; background-color: #007BFF;
+color: white; text-decoration: none; border-radius: 5px;">
+    BookPage
+</a>
+
+</body>
+</html>
