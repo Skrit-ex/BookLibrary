@@ -25,9 +25,9 @@ public class BookController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping("/showBook")
+    @RequestMapping("/home")
     public String getBook() {
-        return "book";
+        return "home";
     }
 
     @GetMapping("/getListOfBooks")

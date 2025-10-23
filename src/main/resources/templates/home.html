@@ -5,7 +5,18 @@
     <title>HomePage</title>
 </head>
 <body>
-Welcome to HomePage, <span th:text="${ param.username}"></span>
+Welcome to HomePage, <span  th:if=text="${param.username}"></span>
+                        <span th:unless=" ${param.username}"> Guest </span>
+<br>
+<br>
+<a href="/regUser" style="display: inline-block; padding: 10px 20px; background-color: #007BFF;
+color: white; text-decoration: none; border-radius: 5px;">
+    Registration
+</a>
+<a href="/login" style="display: inline-block; padding: 10px 20px; background-color: #007BFF;
+color: white; text-decoration: none; border-radius: 5px;">
+    Login
+</a>
 
 <a href="/getListOfBooks" style="display: inline-block; padding: 10px 20px; background-color: #007BFF;
 color: white; text-decoration: none; border-radius: 5px;">
