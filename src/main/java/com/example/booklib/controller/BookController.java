@@ -32,6 +32,7 @@ public class BookController {
 
     @GetMapping("/getListOfBooks")
     public String processGetBook( Model model) {
+        bookService.updateLibrary();
         List<Book> books = bookService.findAll();
         List<String> nameBooks = books.stream()
                 .map(Book::getNameBook)

@@ -46,7 +46,7 @@ public class BookService {
     @Transactional
     public void updateLibrary(){
         readAndSaveData("books.txt", this::parseBooks);
-        readAndSaveData("description", this::parseDescription);
+        readAndSaveData("bookDescription.txt", this::parseDescription);
     }
 
     public void readAndSaveData(String fileName, Consumer<String[]> dataProcessor){
