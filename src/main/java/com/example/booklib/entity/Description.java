@@ -27,7 +27,7 @@ public class Description {
     @Column(name = "description", length =1520)
     private String description;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "book_id", referencedColumnName = "id")
     private Book book;
 

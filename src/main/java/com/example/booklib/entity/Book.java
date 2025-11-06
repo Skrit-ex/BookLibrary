@@ -22,12 +22,15 @@ public class Book {
     private String nameBook;
     private String author;
     private String genre;
-    private String description;
+    private String shortDescription;
 
-    public Book(String nameBook, String author, String genre, String description) {
+    @OneToOne(mappedBy = "book", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Description description;
+
+    public Book(String nameBook, String author, String genre, String shortDescription) {
         this.nameBook = nameBook;
         this.author = author;
         this.genre = genre;
-        this.description = description;
+        this.shortDescription = shortDescription;
     }
 }

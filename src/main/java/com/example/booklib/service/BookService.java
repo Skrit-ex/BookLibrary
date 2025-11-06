@@ -76,14 +76,11 @@ public class BookService {
         String nameBook = data[0].trim();
         String author = data[1].trim();
         String genre = data[2].trim();
-        String description = data[3].trim();
+        String shortDescription = data[3].trim();
         Book existBook = bookRepository.findByNameBookAndAuthor(nameBook,author);
-        if(existBook != null){
-            log.info("Book {} was founded and was updated", existBook);
-            existBook.setGenre(genre);
-            existBook.setNameBook(description);
-        }else {
-            Book book = new Book(nameBook,author,genre,description);
+        if(existBook != null) log.info("Book was found:-> {} ", existBook);
+        else {
+            Book book = new Book(nameBook,author,genre,shortDescription);
             bookRepository.save(book);
         }
     }

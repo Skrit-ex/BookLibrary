@@ -5,7 +5,7 @@
     <title>HomePage</title>
 </head>
 <body>
-Welcome to HomePage, <span  th:if="${param.username}"></span>
+Welcome to HomePage, <span  th:if="${param.username}">[[${param.username}]]</span>
                         <span th:unless="${param.username}"> Guest </span>
 <br>
 <br>

@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Set;
+
 @Table(name = "users", uniqueConstraints = {
         @UniqueConstraint(columnNames = "userName"),
         @UniqueConstraint(columnNames = "email")
@@ -22,4 +24,7 @@ public class User {
     private String userName;
     private String password;
     private String email;
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name="user_role", joinColumns = @JoinColumn(name = "user_id"))
+    private Set<String> roles;
 }
