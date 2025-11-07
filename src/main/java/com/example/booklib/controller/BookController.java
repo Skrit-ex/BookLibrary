@@ -2,12 +2,22 @@ package com.example.booklib.controller;
 
 
 import com.example.booklib.dto.BookDto;
+import com.example.booklib.dto.LoginDto;
 import com.example.booklib.dto.RegUserDto;
 import com.example.booklib.entity.Book;
+import com.example.booklib.entity.User;
+import com.example.booklib.repository.UserRepository;
 import com.example.booklib.service.BookService;
 import com.example.booklib.service.UserService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,13 +27,16 @@ import java.util.List;
 
 @Slf4j
 @Controller
+@RequiredArgsConstructor
 public class BookController {
 
-    @Autowired
-     private BookService bookService;
+    private final BookService bookService;
 
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
+
+    private final UserRepository userRepository;
+
+    private final AuthenticationManager authenticationManager;
 
     @RequestMapping("/home")
     public String getBook() {
@@ -61,5 +74,18 @@ public class BookController {
             log.error("Error in saving user");
         }
         return "home";
+    }
+    @PostMapping("/login")
+    public String login(@RequestBody LoginDto loginDto, Model model) {
+        model.addAttribute("loginDto", new LoginDto());
+        User user = userRepository.findByEmail(loginDto.getEmail())
+                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+        Authentication authentication = authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken
+                        (loginDto.getEmail(), loginDto.getPassword()));
+
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+        log.info(" User {} logged in successfully", user.getEmail());
+        return "login";
     }
 }
