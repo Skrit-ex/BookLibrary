@@ -92,8 +92,12 @@ public class BookService {
         String nameBook = data[0].trim();
         String fullDescription = data[1].trim();
 
+        Book book = bookRepository.findByNameBook(nameBook)
+                        .orElseThrow(() -> new RuntimeException("Book not found"));
+
         descriptionRepository.findByNameBook(nameBook).ifPresentOrElse(bookDescription -> {
                     bookDescription.setDescription(fullDescription);
+                    bookDescription.setBook(book);
                     log.info("Description {} was updated", bookDescription);
                     descriptionRepository.save(bookDescription);
                 },
@@ -101,6 +105,7 @@ public class BookService {
                         Description newDescription = new Description(nameBook,fullDescription);
                         newDescription.setNameBook(nameBook);
                         newDescription.setDescription(fullDescription);
+                        newDescription.setBook(book);
                         descriptionRepository.save(newDescription);
                         log.info("Repository was updated");
                     }

@@ -2,10 +2,7 @@ package com.example.booklib.entity;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
+import lombok.*;
 
 @Table (name = "fullDescription", uniqueConstraints = {
         @UniqueConstraint(columnNames = "id")
@@ -15,6 +12,7 @@ import lombok.NonNull;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+@ToString(exclude = "book")
 public class Description {
 
     @Id
