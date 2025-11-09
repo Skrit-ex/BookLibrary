@@ -24,6 +24,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @Slf4j
 @Controller
@@ -38,8 +39,14 @@ public class BookController {
 
     private final AuthenticationManager authenticationManager;
 
-    @RequestMapping("/home")
-    public String getBook() {
+    @GetMapping("/home")
+    public String getBook(User user) {
+        try{
+            log.info("trying to get current user");
+            userService.getCurrentUser();
+        }catch (Exception e){
+            log.error("get current user exception", e);
+        }
         return "home";
     }
 
@@ -67,7 +74,7 @@ public class BookController {
         model.addAttribute("regUserDto", new RegUserDto());
         return "registration";
     }
-    @RequestMapping("/regUser")
+    @PostMapping("/regUser")
     public String saveUser(@ModelAttribute("regUserDto") RegUserDto regUserDto, BindingResult bindingResult) {
         userService.saveUser(regUserDto);
         if (bindingResult.hasErrors()){
@@ -75,17 +82,10 @@ public class BookController {
         }
         return "home";
     }
-    @PostMapping("/login")
-    public String login(@RequestBody LoginDto loginDto, Model model) {
+    @GetMapping("/login")
+    public String getLogin(Model model) {
         model.addAttribute("loginDto", new LoginDto());
-        User user = userRepository.findByEmail(loginDto.getEmail())
-                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
-        Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken
-                        (loginDto.getEmail(), loginDto.getPassword()));
-
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-        log.info(" User {} logged in successfully", user.getEmail());
         return "login";
     }
+
 }

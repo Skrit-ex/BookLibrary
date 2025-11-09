@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Table(name = "users", uniqueConstraints = {
@@ -26,5 +27,5 @@ public class User {
     private String email;
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name="user_role", joinColumns = @JoinColumn(name = "user_id"))
-    private Set<String> roles;
+    private Set<String> roles = new HashSet<>();
 }

@@ -37,7 +37,7 @@ public class CustomUserDetail implements UserDetails {
 
     @Override
     public String getUsername() {
-        return user.getUserName();
+        return user.getEmail(); //NOTE: because (login == email)
     }
 
 

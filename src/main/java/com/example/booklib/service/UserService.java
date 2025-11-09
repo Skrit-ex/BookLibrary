@@ -1,21 +1,18 @@
 package com.example.booklib.service;
 
 import com.example.booklib.configuration.CustomUserDetail;
+import com.example.booklib.configuration.EncoderConfig;
 import com.example.booklib.dto.RegUserDto;
 import com.example.booklib.entity.User;
 import com.example.booklib.mapper.UserMapper;
 import com.example.booklib.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -29,7 +26,7 @@ public class UserService implements UserDetailsService {
 
 
     private final UserRepository userRepository;
-    private final PasswordEncoder passwordEncoder;
+    private final EncoderConfig encoderConfig;
 
     public boolean saveUser(RegUserDto regUserDto) {
         if(userRepository.existsByUserNameAndEmail(regUserDto.getUsername(), regUserDto.getEmail())){
@@ -38,7 +35,7 @@ public class UserService implements UserDetailsService {
         }
         User user = UserMapper.regUserDtoToUser(regUserDto);
         user.getRoles().add("ROLE_USER");
-        user.setPassword(passwordEncoder.encode(regUserDto.getPassword()));
+        user.setPassword(encoderConfig.passwordEncoder().encode(regUserDto.getPassword()));
         userRepository.save(user);
         log.info("User saved");
         return true;
@@ -67,13 +64,14 @@ public class UserService implements UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUserName(username);
-        if(user == null){
-            throw new UsernameNotFoundException("User not found");
-        } else {
-        return new CustomUserDetail (user);
-        }
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        return userRepository.findByEmail(email)
+                .map(CustomUserDetail::new)
+                .orElseThrow(() -> new UsernameNotFoundException("User with email " + email + " not found"));
+        //NOTE: another
+//                    userRepository.findByEmail(email)
+//                        .map(user -> new CustomUserDetail(user))
+//                        .orElseThrow(() -> new UsernameNotFoundException("User with email " + email1 + " not found"));
     }
     public User getCurrentUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
