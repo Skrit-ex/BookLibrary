@@ -28,21 +28,20 @@ public class UserService implements UserDetailsService {
     private final UserRepository userRepository;
     private final EncoderConfig encoderConfig;
 
-    public boolean saveUser(RegUserDto regUserDto) {
+    public void saveUser(RegUserDto regUserDto) {
         if(userRepository.existsByUserNameAndEmail(regUserDto.getUsername(), regUserDto.getEmail())){
             log.info("User already exists");
-            return false;
+            return;
         }
         User user = UserMapper.regUserDtoToUser(regUserDto);
         user.getRoles().add("ROLE_USER");
         user.setPassword(encoderConfig.passwordEncoder().encode(regUserDto.getPassword()));
         userRepository.save(user);
         log.info("User saved");
-        return true;
     }
 
     public Optional<User> findUserByUsername(String username) {
-        Optional<User> userOptional = userRepository.findByEmail(username);
+        Optional<User> userOptional = userRepository.findByUserName(username);
         if (userOptional.isPresent()) {
             log.info("User {} found", userOptional);
             return userOptional;
@@ -52,22 +51,23 @@ public class UserService implements UserDetailsService {
         }
     }
 
-    public Optional<User> findByEmail(String email) {
-        Optional<User> userEmail = userRepository.findByEmail(email);
-        if(userEmail.isEmpty()){
-            log.error("User with email {} not found", email);
-            return Optional.empty();
-        }else {
-            log.info("User with email {} was founded", email);
-            return userEmail;
-        }
-    }
+//    public Optional<User> findByEmail(String email) {
+//        Optional<User> userEmail = userRepository.findByEmail(email);
+//        if(userEmail.isEmpty()){
+//            log.error("User with email {} not found", email);
+//            return Optional.empty();
+//        }else {
+//            log.info("User with email {} was founded", email);
+//            return userEmail;
+//        }
+//    }
 
     @Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        return userRepository.findByEmail(email)
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        return userRepository.findByUserName(username)
                 .map(CustomUserDetail::new)
-                .orElseThrow(() -> new UsernameNotFoundException("User with email " + email + " not found"));
+                .orElseThrow(() -> new UsernameNotFoundException("User " + username + " not found"));
+
         //NOTE: another
 //                    userRepository.findByEmail(email)
 //                        .map(user -> new CustomUserDetail(user))

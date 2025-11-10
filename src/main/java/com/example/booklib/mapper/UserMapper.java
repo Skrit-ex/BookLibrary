@@ -12,6 +12,4 @@ public class UserMapper {
         user.setEmail(regUserDto.getEmail());
         return user;
     }
-
-
 }

@@ -1,8 +1,6 @@
 package com.example.booklib.configuration;
 
 import com.example.booklib.entity.User;
-import com.example.booklib.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -37,7 +35,7 @@ public class CustomUserDetail implements UserDetails {
 
     @Override
     public String getUsername() {
-        return user.getEmail(); //NOTE: because (login == email)
+        return user.getUserName();
     }
 
 

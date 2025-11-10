@@ -26,14 +26,12 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/login","/regUser","/home", "/static/**").permitAll()
+                        .requestMatchers("/login","/regUser","/home", "/loginError").permitAll()
                         .requestMatchers("/admin/**").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form
                         .loginPage("/login")    //NOTE: путь к кастомной странице логина
-                        .usernameParameter("email") //NOTE: по стандарту Spring Security ищет username and password
-                        .passwordParameter("password")
                         .defaultSuccessUrl("/home",true) //NOTE: куда перенаправлять после успешного входа
                         .failureUrl("/loginError")  //NOTE: куда при ошибке
                         .permitAll()
