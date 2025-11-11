@@ -5,6 +5,7 @@ import com.example.booklib.dto.BookDto;
 import com.example.booklib.dto.LoginDto;
 import com.example.booklib.dto.RegUserDto;
 import com.example.booklib.entity.Book;
+import com.example.booklib.entity.Description;
 import com.example.booklib.service.BookService;
 import com.example.booklib.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -46,10 +47,7 @@ public class BookController {
     public String processGetBook(Model model) {
         bookService.updateLibrary();
         List<Book> books = bookService.findAll();
-        List<String> nameBooks = books.stream()
-                .map(Book::getNameBook)
-                .toList();
-        model.addAttribute("nameBooks", nameBooks);
+        model.addAttribute("books", books);
         return "getBooks";
     }
 
@@ -84,6 +82,14 @@ public class BookController {
     @GetMapping("/loginError")
     public String loginError() {
         return "loginError";
+    }
+    @GetMapping("/fullBookDescription/{id}")
+    public String getFullBookInfo(@PathVariable Long id, Model model) {
+        Book book = bookService.findById(id);
+        Description bookDescription = bookService.findDescriptionById(id);
+        model.addAttribute("book", book);
+        model.addAttribute("bookDescription", bookDescription);
+        return "fullBookDescription";
     }
 }
 

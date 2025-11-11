@@ -98,7 +98,7 @@ public class BookService {
         descriptionRepository.findByNameBook(nameBook).ifPresentOrElse(bookDescription -> {
                     bookDescription.setDescription(fullDescription);
                     bookDescription.setBook(book);
-                    log.info("Description {} was updated", bookDescription);
+                    //log.error("Description {} was updated", bookDescription);
                     descriptionRepository.save(bookDescription);
                 },
                 () -> {
@@ -111,4 +111,12 @@ public class BookService {
                     }
                 );
         }
+    public Book findById(Long id){
+        return  bookRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Book with id " + id + " not found"));
+    }
+    public Description findDescriptionById(Long id){
+        return descriptionRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Description with id " + id + " not found"));
+    }
     }

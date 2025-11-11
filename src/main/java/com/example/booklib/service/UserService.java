@@ -3,8 +3,10 @@ package com.example.booklib.service;
 import com.example.booklib.configuration.CustomUserDetail;
 import com.example.booklib.configuration.EncoderConfig;
 import com.example.booklib.dto.RegUserDto;
+import com.example.booklib.entity.Book;
 import com.example.booklib.entity.User;
 import com.example.booklib.mapper.UserMapper;
+import com.example.booklib.repository.BookRepository;
 import com.example.booklib.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -27,6 +29,7 @@ public class UserService implements UserDetailsService {
 
     private final UserRepository userRepository;
     private final EncoderConfig encoderConfig;
+    private final BookRepository bookRepository;
 
     public void saveUser(RegUserDto regUserDto) {
         if(userRepository.existsByUserNameAndEmail(regUserDto.getUsername(), regUserDto.getEmail())){
