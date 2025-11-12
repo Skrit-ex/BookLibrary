@@ -19,6 +19,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @Slf4j
 @Controller
@@ -90,6 +91,12 @@ public class BookController {
         model.addAttribute("book", book);
         model.addAttribute("bookDescription", bookDescription);
         return "fullBookDescription";
+    }
+    @GetMapping("/getListOfBook/{query}")
+    public String getListOfBook(@PathVariable String query, Model model, BindingResult bindingResult) {
+        List<Book> books = bookService.findByNameBookOrAuthor(query);
+        model.addAttribute("books", books);
+        return "findByNameBook";
     }
 }
 

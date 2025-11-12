@@ -119,4 +119,8 @@ public class BookService {
         return descriptionRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Description with id " + id + " not found"));
     }
+
+    public List<Book> findByNameBookOrAuthor (String query){
+        return bookRepository.findByNameBookOrAuthor(query,query);
+    }
     }
