@@ -60,7 +60,7 @@
     <div class="container-fluid">
         <a class="navbar-brand">List of Books</a>
             <a class="nav-link active ms-3" aria-current="page" href="/home">HomePage</a>
-        <form class="d-flex ms-auto" role="search">
+        <form class="d-flex ms-auto" role="search" th:action="@{/getListOfBook}" method="get">
             <input class="form-control me-2" type="search" name="query" placeholder="Search by NameBook or Author" aria-label="Search"/>
             <button class="btn btn-outline-success" type="submit">Search</button>
         </form>

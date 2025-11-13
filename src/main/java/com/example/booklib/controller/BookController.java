@@ -92,8 +92,8 @@ public class BookController {
         model.addAttribute("bookDescription", bookDescription);
         return "fullBookDescription";
     }
-    @GetMapping("/getListOfBook/{query}")
-    public String getListOfBook(@PathVariable String query, Model model, BindingResult bindingResult) {
+    @GetMapping("/getListOfBook")
+    public String getListOfBook(@RequestParam String query, Model model) {
         List<Book> books = bookService.findByNameBookOrAuthor(query);
         model.addAttribute("books", books);
         return "findByNameBook";

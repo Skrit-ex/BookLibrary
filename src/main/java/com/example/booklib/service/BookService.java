@@ -121,6 +121,6 @@ public class BookService {
     }
 
     public List<Book> findByNameBookOrAuthor (String query){
-        return bookRepository.findByNameBookOrAuthor(query,query);
+        return bookRepository.findByNameBookContainingIgnoreCaseOrAuthorContainingIgnoreCase(query,query);
     }
     }
