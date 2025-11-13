@@ -98,6 +98,10 @@ public class BookController {
         model.addAttribute("books", books);
         return "findByNameBook";
     }
+    @GetMapping("/logOut")
+    public String logOut() {
+        return "home";
+    }
 }
 
 

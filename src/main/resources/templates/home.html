@@ -30,9 +30,18 @@ Welcome to HomePage, <span th:if="${username}" th:text="${username}"></span>
 <br>
 <br>
 
-<a href="/regUser" style="display: inline-block; padding: 10px 20px; background-color: #007BFF;
+<a href="/regUser"
+   th:unless="${username != 'Guest'}"
+   style="display: inline-block; padding: 10px 20px; background-color: #007BFF;
 color: white; text-decoration: none; border-radius: 5px;">
     Registration
+</a>
+
+<a href="/logout"
+       th:unless="${username == 'Guest'}"
+       style="display: inline-block; padding: 10px 20px; background-color: #007BFF;
+color: white; text-decoration: none; border-radius: 5px;">
+        LogOut
 </a>
 
 <a href="/login"
