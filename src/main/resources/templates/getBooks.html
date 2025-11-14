@@ -70,19 +70,19 @@
 <table>
     <thead>
     <tr>
-        <th>Название книги</th>
-        <th>Жанр</th>
-        <th>Автор</th>
+        <th>Name book</th>
+        <th>Genre</th>
+        <th>Author</th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="book : ${books}">
         <td>
             <a th:href="@{/book/fullBookDescription/{id}(id=${book.id})}"
-               th:text="${book.nameBook}">Название книги</a>
+               th:text="${book.nameBook}">Name Book</a>
         </td>
-        <td th:text="${book.genre}">Жанр</td>
-        <td th:text="${book.author}">Автор</td>
+        <td th:text="${book.genre}">Genre</td>
+        <td th:text="${book.author}">Author</td>
     </tr>
     </tbody>
 </table>

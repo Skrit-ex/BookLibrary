@@ -46,7 +46,7 @@ public class BookController {
         return "fullBookDescription";
     }
 
-    @GetMapping("/getListOfBook")
+    @GetMapping("/searchBooks")
     public String getListOfBook(@RequestParam String query, Model model) {
         List<Book> books = bookService.findByNameBookOrAuthor(query);
         model.addAttribute("books", books);

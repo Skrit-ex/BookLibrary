@@ -3,6 +3,7 @@ package com.example.booklib.controller;
 import com.example.booklib.dto.LoginDto;
 import com.example.booklib.dto.RegUserDto;
 import com.example.booklib.service.UserService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
@@ -36,7 +37,6 @@ public class UserController {
         return "home";
     }
 
-
     @GetMapping("/regUser")
     public String regUser(Model model) {
         model.addAttribute("regUserDto", new RegUserDto());
@@ -44,12 +44,14 @@ public class UserController {
     }
 
     @PostMapping("/regUser")
-    public String saveUser(@ModelAttribute("regUserDto") RegUserDto regUserDto, BindingResult bindingResult) {
-        userService.saveUser(regUserDto);
+    public String saveUser(@Valid @ModelAttribute("regUserDto") RegUserDto regUserDto,
+                           BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             log.error("Error in saving user");
+            return "registrationError";
         }
-        return "home";
+        userService.saveUser(regUserDto);
+        return "redirect:/user/home";
     }
 
     @GetMapping("/login")
@@ -60,9 +62,5 @@ public class UserController {
     @GetMapping("/loginError")
     public String loginError() {
         return "loginError";
-    }
-    @GetMapping("/logOut")
-    public String logOut() {
-        return "home";
     }
 }
