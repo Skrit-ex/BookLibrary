@@ -59,7 +59,7 @@
 <nav class="navbar bg-body-tertiary">
     <div class="container-fluid">
         <a class="navbar-brand">List of Books</a>
-        <a class="nav-link active ms-3" aria-current="page" href="/home">return to HomePage</a>
+        <a class="nav-link active ms-3" aria-current="page" href="/user/home">return to HomePage</a>
         <form class="d-flex ms-auto" role="search">
             <input class="form-control me-2" type="search" name="query" placeholder="Search by NameBook or Author" aria-label="Search"/>
             <button class="btn btn-outline-success" type="submit">Search</button>
@@ -76,7 +76,7 @@
         <tbody>
         <tr th:each="book : ${books}">
             <td>
-                <a th:href="@{/fullBookDescription/{id}(id=${book.id})}"
+                <a th:href="@{/book/fullBookDescription/{id}(id=${book.id})}"
                    th:text="${book.nameBook}">Name Book</a>
             </td>
             <td th:text="${book.genre}">Genre</td>

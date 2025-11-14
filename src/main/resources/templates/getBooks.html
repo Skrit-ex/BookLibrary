@@ -78,7 +78,7 @@
     <tbody>
     <tr th:each="book : ${books}">
         <td>
-            <a th:href="@{/fullBookDescription/{id}(id=${book.id})}"
+            <a th:href="@{/book/fullBookDescription/{id}(id=${book.id})}"
                th:text="${book.nameBook}">Название книги</a>
         </td>
         <td th:text="${book.genre}">Жанр</td>
@@ -87,7 +87,7 @@
     </tbody>
 </table>
 
-<a href="/home" class="btn">Return to HomePage</a>
+<a href="/user/home" class="btn">Return to HomePage</a>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>

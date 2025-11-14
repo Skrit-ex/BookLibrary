@@ -27,7 +27,7 @@
 <div class="container">
 <p1> Registration</p1>
 <br>
-<form th:action="@{/regUser}" th:object="${regUserDto}" method="post">
+<form th:action="@{/user/regUser}" th:object="${regUserDto}" method="post">
     <input type="text" name="username" placeholder="Username">
     <input type="email" name="email" placeholder="Email">
     <input type="password" name="password" placeholder="Password">

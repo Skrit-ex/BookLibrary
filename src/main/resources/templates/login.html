@@ -26,7 +26,8 @@
 </head>
 <body>
 <div class="container">
-<form th:action="@{/login}" th:object="${loginDto}" method="post">
+    <h1>Login page</h1>
+<form th:action="@{/user/login}" th:object="${loginDto}" method="post">
     <input type="text" name="username" placeholder="Username">
     <input type="password" name="password" placeholder="Password">
     <br>

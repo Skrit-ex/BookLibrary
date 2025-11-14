@@ -4,7 +4,6 @@ import com.example.booklib.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -26,18 +25,18 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/login","/regUser","/home", "/loginError").permitAll()
+                        .requestMatchers("/user/login", "/user/regUser", "/user/home", "/user/loginError").permitAll()
                         .requestMatchers("/admin/**").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form
-                        .loginPage("/login")    //NOTE: путь к кастомной странице логина
-                        .defaultSuccessUrl("/home",true) //NOTE: куда перенаправлять после успешного входа
-                        .failureUrl("/loginError")  //NOTE: куда при ошибке
+                        .loginPage("/user/login")    //NOTE: путь к кастомной странице логина
+                        .defaultSuccessUrl("/user/home", true) //NOTE: куда перенаправлять после успешного входа
+                        .failureUrl("/user/loginError")  //NOTE: куда при ошибке
                         .permitAll()
                 )
                 .logout(logout -> logout
-                        .logoutUrl("/logout")
+                        .logoutUrl("/user/logout")
                         .invalidateHttpSession(true)
                         .deleteCookies("JSESSIONID")
                         .permitAll()

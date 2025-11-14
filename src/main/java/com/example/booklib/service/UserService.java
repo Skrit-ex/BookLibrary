@@ -10,6 +10,7 @@ import com.example.booklib.repository.BookRepository;
 import com.example.booklib.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -99,4 +100,8 @@ public class UserService implements UserDetailsService {
         log.error("Unsupported authentication principal type: {}", principal.getClass().getName());
         throw new RuntimeException("Unsupported authentication principal");
     }
+
+    public Authentication isAuthenticated() {
+        return SecurityContextHolder.getContext().getAuthentication();
+        }
 }
