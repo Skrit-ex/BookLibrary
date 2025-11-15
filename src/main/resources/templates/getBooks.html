@@ -59,7 +59,7 @@
 <nav class="navbar bg-body-tertiary">
     <div class="container-fluid">
         <a class="navbar-brand">List of Books</a>
-            <a class="nav-link active ms-3" aria-current="page" href="/home">HomePage</a>
+            <a class="nav-link active ms-3" aria-current="page" href="/user/home">HomePage</a>
         <form class="d-flex ms-auto" role="search" th:action="@{/getListOfBook}" method="get">
             <input class="form-control me-2" type="search" name="query" placeholder="Search by NameBook or Author" aria-label="Search"/>
             <button class="btn btn-outline-success" type="submit">Search</button>
@@ -71,7 +71,23 @@
     <thead>
     <tr>
         <th>Name book</th>
-        <th>Genre</th>
+        <th>
+            <form action="/book/sortGenre" method="get">
+            <select name="genre">
+                <option value="Classic">Classic</option>
+                <option value="Fantasy">Fantasy</option>
+                <option value="Drama">Drama</option>
+                <option value="Historical Fiction">Historical Fiction</option>
+                <option value="Psychological Fiction">Psychological Fiction</option>
+                <option value="Romance">Romance</option>
+                <option value="Satire">Satire</option>
+                <option value="Comedy">Comedy</option>
+                <option value="Science Fiction">Science Fiction</option>
+                <option value="Drama">Drama</option>
+            </select>
+            <button type="submit">Sort</button>
+            </form>
+        </th>
         <th>Author</th>
     </tr>
     </thead>

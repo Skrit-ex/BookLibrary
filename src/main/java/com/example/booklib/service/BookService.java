@@ -123,4 +123,7 @@ public class BookService {
     public List<Book> findByNameBookOrAuthor (String query){
         return bookRepository.findByNameBookContainingIgnoreCaseOrAuthorContainingIgnoreCase(query,query);
     }
+    public List<Book> findByGenre(String genre){
+        return bookRepository.findByGenreOrderByNameBookAsc(genre);
+    }
     }

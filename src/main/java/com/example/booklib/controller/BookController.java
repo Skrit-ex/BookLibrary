@@ -52,6 +52,13 @@ public class BookController {
         model.addAttribute("books", books);
         return "findByNameBook";
     }
+    @GetMapping("/sortGenre")
+    public String sortGenre(@RequestParam String genre, Model model) {
+        List<Book> books = bookService.findByGenre(genre);
+        model.addAttribute("books", books);
+        model.addAttribute("genre", genre);
+        return "getBooks";
+    }
 }
 
 
