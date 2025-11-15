@@ -70,7 +70,11 @@
 <table>
     <thead>
     <tr>
-        <th>Name book</th>
+        <th>
+            <a th:href="@{/book/getListOfBooks(page=${currentPage}, sort='nameBook', direction=${sortDir})}">
+            Name book
+            </a>
+        </th>
         <th>
             <form action="/book/sortGenre" method="get">
             <select name="genre">
@@ -102,6 +106,32 @@
     </tr>
     </tbody>
 </table>
+
+<!--   pagination-->
+<div>
+    <ul class="pagination">
+        <li th:if="${currentPage > 0}" class="page-item">
+            <a class="page-link"
+               th:href="@{/book/getListOfBooks(page=${currentPage-1}, size=${size}, sort=${sortField}, direction=${sortDir})}">
+                Previous
+            </a>
+        </li>
+
+        <li th:each="i : ${#numbers.sequence(0, totalPages-1)}"
+            th:classappend="${i == currentPage} ? 'active'">
+            <a class="page-link"
+               th:href="@{/book/getListOfBooks(page=${i}, size=${size}, sort=${sortField}, direction=${sortDir})}"
+               th:text="${i+1}">1</a>
+        </li>
+
+        <li th:if="${currentPage < totalPages-1}" class="page-item">
+            <a class="page-link"
+               th:href="@{/book/getListOfBooks(page=${currentPage+1}, size=${size}, sort=${sortField}, direction=${sortDir})}">
+                Next
+            </a>
+        </li>
+    </ul>
+</div>
 
 <a href="/user/home" class="btn">Return to HomePage</a>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"

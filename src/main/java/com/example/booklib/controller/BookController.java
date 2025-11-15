@@ -6,6 +6,10 @@ import com.example.booklib.entity.Description;
 import com.example.booklib.service.BookService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -22,10 +26,26 @@ public class BookController {
     private final BookService bookService;
 
     @GetMapping("/getListOfBooks")
-    public String processGetBook(Model model) {
-        bookService.updateLibrary();
-        List<Book> books = bookService.findAll();
-        model.addAttribute("books", books);
+    public String processGetBook(@RequestParam(defaultValue = "0") int page, //NOTE: номер страницы (по умолчанию 0 → первая страница)
+                                 @RequestParam(defaultValue = "10") int size, //NOTE: сколько книг показывать на странице (по умолчанию 10).
+                                 @RequestParam(defaultValue = "nameBook") String sort, //NOTE: по какому полю сортировать (по умолчанию nameBook)
+                                 @RequestParam(defaultValue = "asc") String direction, //NOTE: направление сортировки (asc или desc)
+                                 Model model) {
+
+        Sort sortOrder = direction.equalsIgnoreCase("asc")
+                ? Sort.by(sort).ascending()
+                : Sort.by(sort).descending();
+
+        Pageable pageable = PageRequest.of(page, size, sortOrder);                  //NOTE: PageRequest объединяет номер страницы, размер страницы и сортировку.
+
+        Page<Book> bookPage = bookService.findAll(pageable);
+
+        model.addAttribute("currentPage", bookPage.getNumber());        //NOTE:  Внутри Page<Book> хранится:
+        model.addAttribute("totalPages", bookPage.getTotalPages());     // список книг для текущей страницы (getContent()),
+        model.addAttribute("books", bookPage.getContent());             // общее количество страниц (getTotalPages()),
+        model.addAttribute("totalItems", bookPage.getTotalElements());  // общее количество элементов (getTotalElements()).
+        model.addAttribute("sortFields", sort);                         // номер страницы (getNumber()),
+        model.addAttribute("sortDir", direction);
         return "getBooks";
     }
 
@@ -58,6 +78,17 @@ public class BookController {
         model.addAttribute("books", books);
         model.addAttribute("genre", genre);
         return "getBooks";
+    }
+    @GetMapping("/updateLibrary")
+    public String updateLibrary(Model model) {
+        try{
+            bookService.updateLibrary();
+            return "redirect:/book/getListOfBooks";
+        }catch (Exception e){
+            log.error("Error with updateLibrary ", e);
+            model.addAttribute("error", "Error with updateLibrary");
+            return "errorUpdateLibrary";
+        }
     }
 }
 
