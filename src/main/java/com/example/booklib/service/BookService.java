@@ -1,5 +1,6 @@
 package com.example.booklib.service;
 
+import com.example.booklib.entity.Author;
 import com.example.booklib.entity.Book;
 import com.example.booklib.entity.Description;
 import com.example.booklib.repository.BookRepository;
@@ -16,6 +17,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Consumer;
 
 @Service
@@ -118,5 +120,9 @@ public class BookService {
 
     public List<Book> findByGenre(String genre) {
         return bookRepository.findByGenreOrderByNameBookAsc(genre);
+    }
+    public Author findByAuthor(String nameAuthor) {
+        return bookRepository.findByAuthor(nameAuthor)
+                .orElseThrow(() -> new RuntimeException("Author with name " + nameAuthor + " not found"));
     }
 }

@@ -1,6 +1,7 @@
 package com.example.booklib.controller;
 
 import com.example.booklib.dto.BookDto;
+import com.example.booklib.entity.Author;
 import com.example.booklib.entity.Book;
 import com.example.booklib.entity.Description;
 import com.example.booklib.service.BookService;
@@ -91,6 +92,12 @@ public class BookController {
             model.addAttribute("error", "Error with updateLibrary");
             return "errorUpdateLibrary";
         }
+    }
+    @GetMapping("/getAuthor/{author}")
+    public String getAuthor(@PathVariable String author, Model model) {
+        Author findAuthor = bookService.findByAuthor(author);
+        model.addAttribute("author", findAuthor);
+        return "author";
     }
 }
 

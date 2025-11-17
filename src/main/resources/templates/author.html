@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Author</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 40px;
+            text-align: center;
+        }
+        .container {
+            background-color: #f5c6cb;
+            border: 1px solid #f1b0b7;
+            border-radius: 8px;
+            padding: 20px;
+            display: inline-block;
+        }
+        a {
+            color: #721c24;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1 th:text="${author}">Author</h1>
+
+    <div>
+        <p><strong>Author:</strong> <span th:text="${book.author}">Author</span></p>
+        <!--        <p><strong>Год издания:</strong> <span th:text="${book.year}">Год</span></p>-->
+    </div>
+
+    <hr/>
+
+
+    <hr/>
+
+    <a th:href="@{/book/getListOfBooks}">Return to list of books</a>
+</div>
+
+</body>
+</html>

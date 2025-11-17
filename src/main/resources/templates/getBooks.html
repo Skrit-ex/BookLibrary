@@ -102,7 +102,10 @@
                th:text="${book.nameBook}">Name Book</a>
         </td>
         <td th:text="${book.genre}">Genre</td>
-        <td th:text="${book.author}">Author</td>
+        <td>
+                <a th:href="@{/book/getAuthor/{nameAuthor}(nameAuthor=${book.author})}"
+                th:text="${book.author}">Author</a>
+        </td>
     </tr>
     </tbody>
 </table>
