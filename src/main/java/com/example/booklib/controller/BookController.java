@@ -72,6 +72,7 @@ public class BookController {
         model.addAttribute("books", books);
         return "findByNameBook";
     }
+
     @GetMapping("/sortGenre")
     public String sortGenre(@RequestParam String genre, Model model) {
         List<Book> books = bookService.findByGenre(genre);
@@ -79,12 +80,13 @@ public class BookController {
         model.addAttribute("genre", genre);
         return "getBooks";
     }
+
     @GetMapping("/updateLibrary")
     public String updateLibrary(Model model) {
-        try{
+        try {
             bookService.updateLibrary();
             return "redirect:/book/getListOfBooks";
-        }catch (Exception e){
+        } catch (Exception e) {
             log.error("Error with updateLibrary ", e);
             model.addAttribute("error", "Error with updateLibrary");
             return "errorUpdateLibrary";
