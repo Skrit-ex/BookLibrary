@@ -3,6 +3,7 @@ package com.example.booklib.service;
 import com.example.booklib.entity.Author;
 import com.example.booklib.entity.Book;
 import com.example.booklib.entity.Description;
+import com.example.booklib.repository.AuthorRepository;
 import com.example.booklib.repository.BookRepository;
 import com.example.booklib.repository.DescriptionRepository;
 import lombok.RequiredArgsConstructor;
@@ -28,6 +29,7 @@ public class BookService {
 
     private final BookRepository bookRepository;
     private final DescriptionRepository descriptionRepository;
+    private final AuthorRepository authorRepository;
 
     public Page<Book> findAll(Pageable pageable) {
         return bookRepository.findAll(pageable);
@@ -37,6 +39,7 @@ public class BookService {
     public void updateLibrary() {
         readAndSaveData("books.txt", this::parseBooks);
         readAndSaveData("bookDescription.txt", this::parseDescription);
+        readAndSaveData("authors.txt", this::parseAuthors);
     }
     @Transactional
     public void readAndSaveData(String fileName, Consumer<String[]> dataProcessor) {
@@ -65,9 +68,19 @@ public class BookService {
     @Transactional
     public void parseBooks(String[] data) {
         String nameBook = data[0].trim();
-        String author = data[1].trim();
-        String genre = data[2].trim();
-        String shortDescription = data[3].trim();
+        String firstName = data[1].trim();
+        String lastName = data[2].trim();
+        String genre = data[3].trim();
+        String shortDescription = data[4].trim();
+
+        Author author = authorRepository.findByFirstNameIgnoreCaseAndLastNameIgnoreCase(firstName,lastName)
+                .orElseGet(() ->{
+                    Author newAuthor = new Author();
+                    newAuthor.setFirstName(firstName);
+                    newAuthor.setLastName(lastName);
+                    return authorRepository.save(newAuthor);
+                });
+
         Book existBook = bookRepository.findByNameBookAndAuthor(nameBook, author);
         if (existBook != null) log.info("Book was found:-> {} ", existBook);
         else {
@@ -103,6 +116,39 @@ public class BookService {
                 }
         );
     }
+    public void parseAuthors(String[] data) {
+        if (data.length < 4) {
+            log.error("Invalid data format authors");
+            return;
+        }
+        String firstName = data[0];
+        String lastName = data[1];
+        String photoPath = data[2];
+        String biography = data[3];
+
+        Optional<Author> findAuthor = authorRepository
+                .findByFirstNameIgnoreCaseAndLastNameIgnoreCase(firstName, lastName);
+
+        Author author;
+
+        if (findAuthor.isPresent()) {
+            author = findAuthor.get();
+            author.setPhotoPath(photoPath);
+            author.setBiography(biography);
+
+            authorRepository.save(author);
+            log.info("Author {} {} was found and update", firstName, lastName);
+        } else {
+            Author newAuthor = new Author();
+            newAuthor.setFirstName(firstName);
+            newAuthor.setLastName(lastName);
+            newAuthor.setBiography(biography);
+            newAuthor.setPhotoPath(photoPath);
+
+            authorRepository.save(newAuthor);
+            log.info("Author {} {} was created", firstName, lastName);
+        }
+    }
 
     public Book findById(Long id) {
         return bookRepository.findById(id)
@@ -115,14 +161,16 @@ public class BookService {
     }
 
     public List<Book> findByNameBookOrAuthor(String query) {
-        return bookRepository.findByNameBookContainingIgnoreCaseOrAuthorContainingIgnoreCase(query, query);
+        return bookRepository
+        .findByNameBookContainingIgnoreCaseOrAuthor_FirstNameContainingIgnoreCaseOrAuthor_LastNameContainingIgnoreCase(query, query, query);
     }
 
     public List<Book> findByGenre(String genre) {
         return bookRepository.findByGenreOrderByNameBookAsc(genre);
     }
-    public Author findByAuthor(String nameAuthor) {
-        return bookRepository.findByAuthor(nameAuthor)
-                .orElseThrow(() -> new RuntimeException("Author with name " + nameAuthor + " not found"));
+    public Author findAuthorById(Long id){
+        return authorRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Author with id " + id + " not found"));
     }
+
 }

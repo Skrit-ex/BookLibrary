@@ -44,7 +44,7 @@ public class UserController {
     }
 
     @PostMapping("/regUser")
-    public String saveUser(@Valid @ModelAttribute("regUserDto") RegUserDto regUserDto,
+    public String saveUser(@ModelAttribute("regUserDto") RegUserDto regUserDto,
                            BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             log.error("Error in saving user");

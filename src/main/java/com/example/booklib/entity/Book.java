@@ -14,7 +14,6 @@ import lombok.ToString;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString(exclude = "description")
 public class Book {
 
     @Id
@@ -22,14 +21,17 @@ public class Book {
     private Long id;
     @Column(name = "name_book")
     private String nameBook;
-    private String author;
+    @ManyToOne
+    @JoinColumn(name = "author_id")
+    private Author author;
     private String genre;
     private String shortDescription;
 
     @OneToOne(mappedBy = "book", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ToString.Exclude
     private Description description;
 
-    public Book(String nameBook, String author, String genre, String shortDescription) {
+    public Book(String nameBook, Author author, String genre, String shortDescription) {
         this.nameBook = nameBook;
         this.author = author;
         this.genre = genre;

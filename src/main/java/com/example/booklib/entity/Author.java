@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
+
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -16,11 +19,12 @@ public class Author {
     private Long id;
     private String firstName;
     private String lastName;
+    private String photoPath;
+    @Column(name = "biography", length =3520)
+    private String biography;
 
-    @OneToOne
-    @JoinColumn(name = "book_id", referencedColumnName = "id")
-    private Book book;
-
+    @OneToMany(mappedBy = "author")
+    private List<Book> books;
 
 
 }

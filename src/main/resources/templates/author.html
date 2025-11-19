@@ -26,19 +26,15 @@
 </head>
 <body>
 <div class="container">
-    <h1 th:text="${author}">Author</h1>
+    <h1 th:text="${author.firstName} + ' ' + ${author.lastName}"></h1>
+    <img th:src="@{'/images/' + ${author.photoFileName}}" alt="Фото автора">
+    <p th:text="${author.biography}"></p>
 
-    <div>
-        <p><strong>Author:</strong> <span th:text="${book.author}">Author</span></p>
-        <!--        <p><strong>Год издания:</strong> <span th:text="${book.year}">Год</span></p>-->
-    </div>
+    <h2>Книги автора:</h2>
+    <ul>
+        <li th:each="book : ${author.books}" th:text="${book.nameBook}"></li>
+    </ul>
 
-    <hr/>
-
-
-    <hr/>
-
-    <a th:href="@{/book/getListOfBooks}">Return to list of books</a>
 </div>
 
 </body>

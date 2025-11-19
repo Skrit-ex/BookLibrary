@@ -8,7 +8,6 @@ public class BookMapper {
     public static Book bookDtotoBook(BookDto bookDto) {
         Book book = new Book();
         book.setNameBook(bookDto.getNameBook());
-        book.setAuthor(bookDto.getAuthor());
         book.setGenre(bookDto.getGenre());
         return book;
     }
