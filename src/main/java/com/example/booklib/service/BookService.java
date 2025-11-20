@@ -37,9 +37,9 @@ public class BookService {
 
     @Transactional
     public void updateLibrary() {
+        readAndSaveData("authors.txt", this::parseAuthors);
         readAndSaveData("books.txt", this::parseBooks);
         readAndSaveData("bookDescription.txt", this::parseDescription);
-        readAndSaveData("authors.txt", this::parseAuthors);
     }
     @Transactional
     public void readAndSaveData(String fileName, Consumer<String[]> dataProcessor) {
@@ -121,10 +121,10 @@ public class BookService {
             log.error("Invalid data format authors");
             return;
         }
-        String firstName = data[0];
-        String lastName = data[1];
-        String photoPath = data[2];
-        String biography = data[3];
+        String firstName = data[0].trim();
+        String lastName = data[1].trim();
+        String photoPath = data[2].trim();
+        String biography = data[3].trim();
 
         Optional<Author> findAuthor = authorRepository
                 .findByFirstNameIgnoreCaseAndLastNameIgnoreCase(firstName, lastName);
