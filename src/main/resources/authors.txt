@@ -1,0 +1,35 @@
+FirstName                   | LastName               | PathPhoto               | Biography
+----------------------------|-----------------------|----------------------|---------------------------------------------------------------------------Leo | Tolstoy | tolstoy.jpg | Leo Nikolayevich Tolstoy (1828–1910) was a great Russian writer and thinker, born in Yasnaya Polyana. He is known as the author of the epic novels War and Peace and Anna Karenina, which became the pinnacles of Russian literature. Leo Tolstoy was also a publicist and philosopher, and the founder of the religious and moral teaching known as Tolstoyanism. Early Life and Education: Born on August 28 (September 9), 1828, he was orphaned at an early age and raised by his aunt. He entered Kazan University but did not graduate. Military Service: In 1851, he left for the Caucasus, where he began writing Childhood and served in the army. He participated in the Crimean War, including the defense of Sevastopol. Literary Work: In 1852, he published the novella Childhood in the magazine Sovremennik, which brought him fame. He later wrote such works as War and Peace (1863–1869) and Anna Karenina (1873–1877), as well as Resurrection (1889–1899). Teaching career: In 1859, he founded a school for peasant children in Yasnaya Polyana, and in 1872 he published Azbuka.
+Fyodor                      | Dostoevsky            | dostoevsky.jpg | Русский писатель, философ, автор "Преступления и наказания" и "Братьев Карамазовых".
+Mikhail                     | Bulgakov              | bulgakov.jpg | Автор "Мастера и Маргариты", "Собачьего сердца" и "Белой гвардии".
+Boris                       | Pasternak              | pasternak.jpg | Русский поэт и писатель, лауреат Нобелевской премии, автор "Доктора Живаго".
+Mikhail                     | Sholokhov             | sholokhov.jpg | Советский писатель, лауреат Нобелевской премии, автор "Тихого Дона".
+Alexander                   | Solzhenitsyn           | solzhenitsyn.jpg | Русский писатель, лауреат Нобелевской премии, автор "Архипелага ГУЛАГ".
+Vladimir                    | Nabokov               | nabokov.jpg | Русский и американский писатель, автор "Лолиты".
+Nikolai                     | Gogol                 |gogol.jpg | Русский писатель, автор "Мёртвых душ" и "Ревизора".
+Alexander                   | Pushkin               | pushkin.jpg | Русский по писатель, автор "Евгения Онегина".
+Mikhail                     | Lermontov              | lermontov.jpg | Русский поэт и писатель, автор "Героя нашего времени".
+Ivan                        | Goncharov              | goncharov.jpg | Русский писатель, автор "Обломова".
+Ivan                        | Turgenev              | turgenev.jpg | Русский писатель, автор "Отцов и детей".
+Arkady and Boris            | Strugatsky            | strugatsky.jpg | Советские писатели-фантасты, авторы "Пикника на обочине" и "Трудно быть богом".
+Ilya                        | Ilf                    | ilf.jpg | Советский писатель-сатирик, соавтор "Двенадцати стульев" и "Золотого телёнка".
+Andrei                      | Platonov              | platonov.jpg | Советский писатель, автор "Чевенгура" и "Котлована".
+Chingiz                     | Aitmatov              | aitmatov.jpg | Киргизский писатель, автор "И дольше века длится день".
+Vasily                      | Grossman              | grossman.jpg | Советский писатель, автор "Жизни и судьбы".
+Yevgeny                     | Zamyatin              | zamyatin.jpg | Русский писатель, автор антиутопии "Мы".
+Anatoly                     | Rybakov               | rybakov.jpg | Советский писатель, автор "Детей Арбата".
+Alexei                      | Tolstoy               | alexei_tolstoy.jpg | Русский писатель, автор "Петра Первого" и "Хождения по мукам".
+Erich Maria                 | Remarque              | remarque.jpg | Немецкий писатель, автор "На Западном фронте без перемен".
+Albert                      | Camus                 | camus.jpg | Французский философ и писатель, автор "Чумы" и "Постороннего".
+George                      | Orwell                | orwell.jpg | Английский писатель, автор "1984" и "Скотного двора".
+James                       | Joyce                 | joyce.jpg | Ирландский писатель, автор "Улисса".
+Oscar                       | Wilde                 | wilde.jpg | Английский писатель, автор "Портрета Дориана Грея".
+F. Scott                    | Fitzgerald            | fitzgerald.jpg | Американский писатель, автор "Великого Гэтсби".
+J.D.                        | Salinger              | salinger.jpg | Американский писатель, автор "Над пропастью во ржи".
+Harper                      | Lee                   | lee.jpg | Американская писательница, автор "Убить пересмешника".
+Ernest                      | Hemingway             | hemingway.jpg | Американский писатель, лауреат Нобелевской премии, автор "Старика и моря".
+Leo                         | Tolstoy               | tolstoy.jpg               | Leo Nikolayevich Tolstoy (1828–1910) was a great Russian writer and thinker, born in Yasnaya Polyana. He is known as the author of the epic novels War and Peace and Anna Karenina, which became the pinnacles of Russian literature. Leo Tolstoy was also a publicist and philosopher, and the founder of the religious and moral teaching known as Tolstoyanism.
+                                                                                  Early Life and Education: Born on August 28 (September 9), 1828, he was orphaned at an early age and raised by his aunt. He entered Kazan University but did not graduate.
+                                                                                  Military Service: In 1851, he left for the Caucasus, where he began writing Childhood and served in the army. He participated in the Crimean War, including the defense of Sevastopol.
+                                                                                  Literary Work: In 1852, he published the novella Childhood in the magazine Sovremennik, which brought him fame. He later wrote such works as War and Peace (1863–1869) and Anna Karenina (1873–1877), as well as Resurrection (1889–1899).
+                                                                                  Teaching career: In 1859, he founded a school for peasant children in Yasnaya Polyana, and in 1872 he published Azbuka.

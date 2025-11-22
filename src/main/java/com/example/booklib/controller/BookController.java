@@ -93,9 +93,9 @@ public class BookController {
             return "errorUpdateLibrary";
         }
     }
-    @GetMapping("/getAuthor/{id}")
-    public String getAuthor(@PathVariable Long id, Model model) {
-        Author findAuthor = bookService.findAuthorById(id);
+    @GetMapping("/getAuthor/{query}")
+    public String getAuthor(@PathVariable String query, Model model) {
+        Author findAuthor = bookService.findAuthorByName(query);
         model.addAttribute("author", findAuthor);
         return "author";
     }

@@ -26,8 +26,8 @@
 </head>
 <body>
 <div class="container">
-    <h1 th:text="${author.firstName} + ' ' + ${author.lastName}"></h1>
-    <img th:src="@{'/images/' + ${author.photoFileName}}" alt="Фото автора">
+    <h1 th:text="${author.firstName} + ' ' + author.lastName"></h1>
+    <img th:src="@{'/images/' + author.photoFileName}" alt="Фото автора">
     <p th:text="${author.biography}"></p>
 
     <h2>Книги автора:</h2>

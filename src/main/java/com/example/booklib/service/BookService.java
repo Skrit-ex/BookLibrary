@@ -168,9 +168,15 @@ public class BookService {
     public List<Book> findByGenre(String genre) {
         return bookRepository.findByGenreOrderByNameBookAsc(genre);
     }
-    public Author findAuthorById(Long id){
-        return authorRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Author with id " + id + " not found"));
+    public Author findAuthorByName(String query){
+        String [] firstNameAndLastName = query.split(" ");
+        if(firstNameAndLastName.length < 2){
+            throw  new RuntimeException("Invalid data format");
+        }
+
+
+        return authorRepository.findByFirstNameIgnoreCaseOrLastNameIgnoreCase(query, query)
+                .orElseThrow(() -> new RuntimeException("Author with name " + query + " not found"));
     }
 
 }
