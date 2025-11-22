@@ -168,14 +168,17 @@ public class BookService {
     public List<Book> findByGenre(String genre) {
         return bookRepository.findByGenreOrderByNameBookAsc(genre);
     }
+
     public Author findAuthorByName(String query){
         String [] firstNameAndLastName = query.split(" ");
         if(firstNameAndLastName.length < 2){
-            throw  new RuntimeException("Invalid data format");
+            throw  new RuntimeException("Invalid data format " + query);
         }
+        String firstName = firstNameAndLastName[0].trim();
+        String lastName = firstNameAndLastName[1].trim();
 
 
-        return authorRepository.findByFirstNameIgnoreCaseOrLastNameIgnoreCase(query, query)
+        return authorRepository.findByFirstNameIgnoreCaseAndLastNameIgnoreCase(firstName, lastName)
                 .orElseThrow(() -> new RuntimeException("Author with name " + query + " not found"));
     }
 

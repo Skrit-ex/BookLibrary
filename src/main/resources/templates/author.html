@@ -26,8 +26,8 @@
 </head>
 <body>
 <div class="container">
-    <h1 th:text="${author.firstName} + ' ' + author.lastName"></h1>
-    <img th:src="@{'/images/' + author.photoFileName}" alt="Фото автора">
+    <h1 th:text="${author.firstName + ' ' + author.lastName}"></h1>
+    <img th:src="@{/images/{file}(file=${author.photoPath})}" alt="Фото автора">
     <p th:text="${author.biography}"></p>
 
     <h2>Книги автора:</h2>
@@ -35,6 +35,7 @@
         <li th:each="book : ${author.books}" th:text="${book.nameBook}"></li>
     </ul>
 
+    <a th:href="@{/book/getListOfBooks}">Return to list of books</a>
 </div>
 
 </body>
