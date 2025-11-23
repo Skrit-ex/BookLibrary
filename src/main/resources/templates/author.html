@@ -27,10 +27,10 @@
 <body>
 <div class="container">
     <h1 th:text="${author.firstName + ' ' + author.lastName}"></h1>
-    <img th:src="@{/images/{file}(file=${author.photoPath})}" alt="Фото автора">
+    <img th:src="@{/images/{file}(file=${author.photoPath})}" alt="Photo author">
     <p th:text="${author.biography}"></p>
 
-    <h2>Книги автора:</h2>
+    <h2>Books:</h2>
     <ul>
         <li th:each="book : ${author.books}" th:text="${book.nameBook}"></li>
     </ul>
