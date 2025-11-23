@@ -4,25 +4,26 @@
     <meta charset="UTF-8">
     <title>LoginPage</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #7fb6ea;
-            color: #0c0506;
-            padding: 40px;
-            text-align: center;
-        }
-        .container {
-            background-color: #4a9fef;
-            border: 1px solid #3b8ee0;
-            border-radius: 8px;
-            padding: 20px;
-            display: inline-block;
-        }
-        a {
-            color: #721c24;
-            text-decoration: underline;
-        }
-    </style>
+    body {
+        font-family: Arial, sans-serif;
+        background: url('/images/background.jpg') no-repeat center center fixed;
+        background-size: cover;
+        color: #0c0506;
+        padding: 40px;
+        text-align: center;
+    }
+    .container {
+        background-color: rgb(96, 95, 95);
+        border: 1px solid #8f8f8f;
+        border-radius: 8px;
+        padding: 20px;
+        display: inline-block;
+    }
+    a {
+        color: #721c24;
+        text-decoration: underline;
+    }
+</style>
 </head>
 <body>
 <div class="container">
@@ -34,6 +35,8 @@
     <br>
     <button>Submit</button>
 </form>
+    <p1>If you don't have login</p1>
+    <a th:href="@{/user/regUser}"> Registration</a>
 </div>
 </body>
 </html>

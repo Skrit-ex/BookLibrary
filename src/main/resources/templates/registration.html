@@ -6,14 +6,15 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #7fb6ea;
+            background: url('/images/background.jpg') no-repeat center center fixed;
+            background-size: cover;
             color: #0c0506;
             padding: 40px;
             text-align: center;
         }
         .container {
-            background-color: #4a9fef;
-            border: 1px solid #3b8ee0;
+            background-color: rgb(96, 95, 95);
+            border: 1px solid #8f8f8f;
             border-radius: 8px;
             padding: 20px;
             display: inline-block;
@@ -25,15 +26,19 @@
     </style>
 </head>
 <div class="container">
-<p1> Registration</p1>
+<H1> Registration</H1>
 <br>
 <form th:action="@{/user/regUser}" th:object="${regUserDto}" method="post">
     <input type="text" name="username" placeholder="Username">
     <input type="email" name="email" placeholder="Email">
     <input type="password" name="password" placeholder="Password">
     <br>
+    <br>
     <button>Submit</button>
+    <br>
 </form>
+    <br>
+    <a th:href="@{/user/login}">Already registered? Login</a>
 </div>
 </body>
 
