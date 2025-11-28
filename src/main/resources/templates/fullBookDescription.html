@@ -29,7 +29,7 @@
     <h1 th:text="${book.nameBook}">Название книги</h1>
 
     <div>
-        <p><strong>Author:</strong> <span th:text="${book.author}">Author</span></p>
+        <p><strong>Author:</strong> <span th:text="${authorName + ' ' + authorLastName}">Author</span></p>
 <!--        <p><strong>Год издания:</strong> <span th:text="${book.year}">Год</span></p>-->
     </div>
 

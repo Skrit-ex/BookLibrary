@@ -61,9 +61,12 @@ public class BookController {
     @GetMapping("/fullBookDescription/{id}")
     public String getFullBookInfo(@PathVariable Long id, Model model) {
         Book book = bookService.findById(id);
+        Author author = bookService.findById(id).getAuthor();
         Description bookDescription = bookService.findDescriptionById(id);
         model.addAttribute("book", book);
         model.addAttribute("bookDescription", bookDescription);
+        model.addAttribute("authorName", author.getFirstName());
+        model.addAttribute("authorLastName", author.getLastName());
         return "fullBookDescription";
     }
 
